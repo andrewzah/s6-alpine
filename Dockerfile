@@ -1,6 +1,7 @@
-FROM alpine:3.13
+ARG BASE_VERSION=3.12
+FROM alpine:$BASE_VERSION
 
-ENV OVERLAY_VERSION "v2.2.0.1"
+ENV OVERLAY_VERSION "v2.1.0.2"
 ENV OVERLAY_ARCH "amd64"
 ENV OVERLAY_RELEASE_URL "https://github.com/just-containers/s6-overlay/releases/download/${OVERLAY_VERSION}/s6-overlay-${OVERLAY_ARCH}-installer"
 
