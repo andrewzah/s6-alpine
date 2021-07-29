@@ -1,10 +1,14 @@
-set positional-arguments := true
+alpine_version := '3.12'
 
-@build BASE_VERSION:
+build v=alpine_version:
   docker build . \
-    --build-arg "BASE_VERSION=$1" \
-    -t "andrewzah/base-alpine:$1"
+    --build-arg="BASE_VERSION={{v}}" \
+    -t "andrewzah/base-alpine:{{v}}"
 
-@push BASE_VERSION:
-  just build $1
-  docker push "andrewzah/base-alpine:$1"
+buildall:
+  just build 3.12
+  just build 3.13
+
+pushall:
+  docker push "andrewzah/base-alpine:3.12"
+  docker push "andrewzah/base-alpine:3.13"
