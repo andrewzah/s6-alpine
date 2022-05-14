@@ -32,9 +32,11 @@ RUN groupadd abc \
   && useradd \
     -u 1000 \
     -g 1000 \
-    -d /config \
+    -d /home/abc \
     -s /bin/sh abc \
-  && usermod -G abc abc
+  && usermod -G abc abc \
+  && mkdir -p /app /default /home/abc \
+  && chown abc:abc /app /default /home/abc
 
 COPY ./root/ /
 
